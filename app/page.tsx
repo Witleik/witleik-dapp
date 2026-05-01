@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Connection, PublicKey, LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { ConnectButton } from "@/components/ConnectButton";
+import { JupiterSwap } from "@/components/JupiterSwap";
 
 const WITX_MINT = "irSRbc3iHPwYRkjPZgbg4MLW3oqPWNrxZbhBtja7jF8";
 const WALLET_FONDO = "SvCqj2Rbbv4GHCQt3doLzGK1KFEs4zeStgwokKRgxba";
@@ -41,7 +43,11 @@ export default function Home() {
   const valorSolUsd = solBalance !== null && solPrecio !== null ? solBalance * solPrecio : null;
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-black text-white p-8">
+    <div className="flex flex-col items-center min-h-screen bg-black text-white p-8">
+      <header className="w-full max-w-3xl flex justify-end mb-8">
+        <ConnectButton />
+      </header>
+
       <h1 className="text-5xl font-bold text-cyan-400">WITLEIK CAPITAL</h1>
       <p className="text-xl text-zinc-400 mt-4 mb-12">Dashboard del fondo</p>
 
@@ -73,6 +79,10 @@ export default function Home() {
           )}
         </div>
       </div>
+
+      <section className="w-full max-w-2xl mt-12">
+        <JupiterSwap />
+      </section>
     </div>
   );
 }

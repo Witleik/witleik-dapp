@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Header } from "@/components/Header";
 import { JupiterSwap } from "@/components/JupiterSwap";
 import { Footer } from "@/components/Footer";
+import { MyPosition } from "@/components/MyPosition";
+
 
 const WITX_MINT = "irSRbc3iHPwYRkjPZgbg4MLW3oqPWNrxZbhBtja7jF8";
 
@@ -205,7 +207,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="max-w-2xl mx-auto w-full px-6 pb-16">
+      <section className="max-w-4xl mx-auto w-full px-6 pb-12">
+        <MyPosition />
+      </section>
+
+      <section id="witleik-swap" className="max-w-2xl mx-auto w-full px-6 pb-16 scroll-mt-20">
         <JupiterSwap />
       </section>
 

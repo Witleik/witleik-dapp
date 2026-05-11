@@ -77,7 +77,7 @@ export function MyPosition() {
       </div>
     );
   }
-
+  
   const userBalance = balance ?? 0;
   const valorUsd = precio !== null ? userBalance * precio : null;
   const tier = getTier(userBalance);

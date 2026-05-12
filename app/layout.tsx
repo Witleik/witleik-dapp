@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
 import { WalletContextProvider } from "@/components/WalletContextProvider";
+import { Header } from "@/components/Header";
+import { BottomNav } from "@/components/BottomNav";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -54,8 +56,12 @@ export default function RootLayout({
           defer
         />
       </head>
-      <body className="min-h-full flex flex-col font-sans">
-        <WalletContextProvider>{children}</WalletContextProvider>
+      <body className="min-h-full flex flex-col font-sans pb-20 md:pb-0">
+        <WalletContextProvider>
+          <Header />
+          {children}
+          <BottomNav />
+        </WalletContextProvider>
       </body>
     </html>
   );

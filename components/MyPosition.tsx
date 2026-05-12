@@ -41,7 +41,7 @@ const TIERS: Tier[] = [
   {
     name: "Miembro",
     minBalance: 1000,
-    color: "#4eedff",
+    color: "#4eedffd8",
     description: "Miembro activo de Witleik Society",
   },
   {

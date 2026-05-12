@@ -104,3 +104,5 @@ body {
 .wallet-adapter-button:not([disabled]):hover {
   background: linear-gradient(135deg, #4eedff 0%, #23e7ff 100%) !important;
 }
+
+

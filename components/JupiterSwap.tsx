@@ -57,11 +57,5 @@ export function JupiterSwap() {
     }
   }, [walletContext]);
 
-  return (
-    <div className="w-full">
-      <h2 className="text-xl font-bold text-cyan-400 mb-2 text-center">Comprar / Vender $WITX</h2>
-      <p className="text-sm text-zinc-500 mb-6 text-center">Swap directo en Solana · 1% fee de plataforma</p>
-      <div id="jupiter-swap-container" className="rounded-2xl overflow-hidden" />
-    </div>
-  );
+  return <div id="jupiter-swap-container" className="rounded-2xl overflow-hidden" />;
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { JupiterSwap } from "@/components/JupiterSwap";
 import { Footer } from "@/components/Footer";
 
 
@@ -202,10 +201,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      <section id="witleik-swap" className="max-w-2xl mx-auto w-full px-6 pb-16 scroll-mt-20">
-        <JupiterSwap />
       </section>
 
       <section className="max-w-4xl mx-auto w-full px-6 pb-20">

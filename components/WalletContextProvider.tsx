@@ -17,6 +17,10 @@ export function WalletContextProvider({ children }: { children: ReactNode }) {
         description: "Fondo de inversión híbrido en Solana. Transparencia radical.",
         url: "https://app.witleikcapital.com",
         icons: ["https://app.witleikcapital.com/web-app-manifest-512x512.png"],
+        redirect: {
+          native: "",
+          universal: "https://app.witleikcapital.com",
+        },
       },
       projectId,
       features: {

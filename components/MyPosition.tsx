@@ -15,22 +15,40 @@ interface Tier {
 
 const TIERS: Tier[] = [
   {
-    name: "Founder",
-    minBalance: 10000,
-    color: "#23e7ff",
-    description: "Inversor fundador del ecosistema",
+    name: "Leyenda",
+    minBalance: 250000,
+    color: "#ffc933",
+    description: "Inversor élite del ecosistema Witleik",
   },
   {
-    name: "Society",
+    name: "Pilar",
+    minBalance: 100000,
+    color: "#ffd966",
+    description: "Sostén del ecosistema Witleik",
+  },
+  {
+    name: "Magnate",
+    minBalance: 50000,
+    color: "#14b8d4",
+    description: "Inversor mayoritario de $WITX",
+  },
+  {
+    name: "Patrocinador",
+    minBalance: 2500,
+    color: "#23e7ff",
+    description: "Inversor comprometido con Witleik",
+  },
+  {
+    name: "Miembro",
     minBalance: 1000,
     color: "#4eedff",
-    description: "Miembro de Witleik Society",
+    description: "Miembro activo de Witleik Society",
   },
   {
-    name: "Holder",
+    name: "Aliado",
     minBalance: 100,
     color: "#a5f3ff",
-    description: "Holder activo del ecosistema",
+    description: "Aliado del ecosistema Witleik",
   },
 ];
 

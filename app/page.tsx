@@ -10,7 +10,6 @@ interface TokenData {
   precio: number | null;
   cambio24h: number | null;
   liquidez: number | null;
-  volumen24h: number | null;
 }
 
 export default function Home() {
@@ -18,7 +17,6 @@ export default function Home() {
     precio: null,
     cambio24h: null,
     liquidez: null,
-    volumen24h: null,
   });
   const [cargando, setCargando] = useState(true);
   const [copiado, setCopiado] = useState(false);
@@ -46,7 +44,6 @@ export default function Home() {
           precio,
           cambio24h: mejorPair?.priceChange?.h24 ?? null,
           liquidez: mejorPair?.liquidity?.usd ?? null,
-          volumen24h: mejorPair?.volume?.h24 ?? null,
         });
         setCargando(false);
       } catch (error) {
@@ -184,16 +181,6 @@ export default function Home() {
                   >
                     {formatearNumero(datos.liquidez)}
                   </p>
-                  {datos.volumen24h !== null && (
-                    <div className="mt-3 flex items-center gap-2">
-                      <span
-                        className="text-sm text-zinc-400"
-                        style={{ fontFamily: "var(--font-jetbrains-mono)" }}
-                      >
-                        Vol. 24h: {formatearNumero(datos.volumen24h)}
-                      </span>
-                    </div>
-                  )}
                 </>
               ) : (
                 <p className="text-xl text-red-400">Sin datos</p>

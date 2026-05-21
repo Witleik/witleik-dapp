@@ -5,6 +5,12 @@ import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui";
 import { useWrappedReownAdapter } from "@jup-ag/jup-mobile-adapter";
 import "@solana/wallet-adapter-react-ui/styles.css";
+import { useReferralRegistration } from "@/hooks/useReferralRegistration";
+
+function ReferralTracker() {
+  useReferralRegistration();
+  return null;
+}
 
 export function WalletContextProvider({ children }: { children: ReactNode }) {
   const endpoint = process.env.NEXT_PUBLIC_HELIUS_RPC!;
@@ -41,7 +47,10 @@ export function WalletContextProvider({ children }: { children: ReactNode }) {
   return (
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
-        <WalletModalProvider>{children}</WalletModalProvider>
+        <WalletModalProvider>
+          <ReferralTracker />
+          {children}
+        </WalletModalProvider>
       </WalletProvider>
     </ConnectionProvider>
   );

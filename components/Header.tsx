@@ -11,6 +11,7 @@ export function Header() {
     { name: "Inicio", path: "/" },
     { name: "Mi Posición", path: "/posicion" },
     { name: "Afiliados", path: "/afiliados" },
+    { name: "Academia", path: "/academia" },
     { name: "Swap", path: "/swap" },
     { name: "Whitepaper", path: "/whitepaper" },
     { name: "Comunidad", path: "/comunidad" },

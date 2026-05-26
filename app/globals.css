@@ -105,4 +105,121 @@ body {
   background: linear-gradient(135deg, #4eedff 0%, #23e7ff 100%) !important;
 }
 
+@layer components {
+  .leccion-content {
+    color: #d4d4d8;
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .leccion-content h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .leccion-content h2:first-child {
+    border-top: none;
+    padding-top: 0;
+    margin-top: 0;
+  }
+
+  .leccion-content h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-top: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .leccion-content p {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+  }
+
+  .leccion-content ol,
+  .leccion-content ul {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    padding-left: 1.75rem;
+  }
+
+  .leccion-content ol {
+    list-style: decimal;
+  }
+
+  .leccion-content ul {
+    list-style: disc;
+  }
+
+  .leccion-content li {
+    margin-bottom: 0.6rem;
+    line-height: 1.7;
+    padding-left: 0.25rem;
+  }
+
+  .leccion-content li::marker {
+    color: #23e7ff;
+  }
+
+  .leccion-content strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+
+  .leccion-content a {
+    color: #23e7ff;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .leccion-content a:hover {
+    color: #1ad4ec;
+  }
+
+  .leccion-content blockquote {
+    border-left: 3px solid #23e7ff;
+    background: rgba(35, 231, 255, 0.05);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    border-radius: 0 8px 8px 0;
+    color: #e4e4e7;
+  }
+
+  .leccion-content blockquote p {
+    margin-bottom: 0;
+  }
+
+  .leccion-content pre {
+    background: #131318;
+    border: 1px solid rgba(35, 231, 255, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    overflow-x: auto;
+    margin: 1.25rem 0;
+  }
+
+  .leccion-content code {
+    font-family: var(--font-jetbrains-mono);
+    font-size: 0.85rem;
+    color: #23e7ff;
+    word-break: break-all;
+  }
+
+  .leccion-content pre code {
+    color: #ffffff;
+    font-size: 0.9rem;
+  }
+
+  .leccion-content > p:has(+ p),
+  .leccion-content > p {
+    margin-bottom: 1rem;
+  }
+}
+
+
 

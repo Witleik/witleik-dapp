@@ -302,7 +302,7 @@ export default function Home() {
               rel="noopener noreferrer"
               className="inline-block px-8 py-3 rounded-lg bg-[#23e7ff] text-black font-semibold text-sm hover:bg-[#1ad4ec] transition-all"
             >
-              Hablar con Manza
+              Contáctanos
             </a>
           </div>
         </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
+import { WITX_PRICE_1Y_AGO } from "@/lib/fund-config";
 
 const WITX_MINT = "irSRbc3iHPwYRkjPZgbg4MLW3oqPWNrxZbhBtja7jF8";
 const WALLET_FONDO = "SvCqj2Rbbv4GHCQt3doLzGK1KFEs4zeStgwokKRgxba";
@@ -62,6 +63,14 @@ export default function Home() {
   };
 
   const cambioPositivo = (datos.cambio24h ?? 0) >= 0;
+
+  // ROI a 12 meses: se calcula contra WITX_PRICE_1Y_AGO (valor manual en lib/fund-config.ts).
+  // Si ese valor no está configurado (<= 0), no mostramos un ROI falso.
+  const cambio1y =
+    datos.precio !== null && WITX_PRICE_1Y_AGO > 0
+      ? ((datos.precio - WITX_PRICE_1Y_AGO) / WITX_PRICE_1Y_AGO) * 100
+      : null;
+  const cambio1yPositivo = (cambio1y ?? 0) >= 0;
   const dexscreenerUrl = "https://dexscreener.com/solana/" + WITX_MINT;
   const solscanUrl = "https://solscan.io/token/" + WITX_MINT;
   const jupiterUrl = "https://jup.ag/swap/SOL-" + WITX_MINT;
@@ -131,7 +140,7 @@ export default function Home() {
 
       {/* MÉTRICAS DEL FONDO */}
       <section className="max-w-6xl mx-auto w-full px-6 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <MetricCard label="AUM" value="$24K" sublabel="Capital gestionado" />
           <MetricCard
             label="Precio $WITX"
@@ -156,6 +165,18 @@ export default function Home() {
             }
             sublabel="$WITX"
             valueColor={cambioPositivo ? "#00ff88" : "#f87171"}
+          />
+          <MetricCard
+            label="ROI del fondo · 12 meses"
+            value={
+              cargando
+                ? null
+                : cambio1y !== null
+                ? `${cambio1yPositivo ? "+" : "-"}${Math.abs(cambio1y).toFixed(2)}%`
+                : "—"
+            }
+            sublabel="365 días"
+            valueColor={cambio1y !== null ? (cambio1yPositivo ? "#00ff88" : "#f87171") : undefined}
           />
         </div>
       </section>

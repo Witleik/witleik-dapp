@@ -9,4 +9,4 @@
 //
 // ⚠️ ACTUALIZA este número con el precio real de $WITX hace 365 días.
 // Si lo dejas en 0 (o negativo), la home mostrará "—" en vez de un ROI incorrecto.
-export const WITX_PRICE_1Y_AGO = 0;
+export const WITX_PRICE_1Y_AGO = 0.02208;

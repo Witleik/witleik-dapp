@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { Footer } from "@/components/Footer";
+import { useWitxBalance } from "@/hooks/useWitxBalance";
+import { GATE_THRESHOLD } from "@/lib/constants";
 
 interface Leccion {
   slug: string;
@@ -71,6 +73,9 @@ const LECCIONES: Leccion[] = [
 ];
 
 export default function Academia() {
+  const { balance } = useWitxBalance();
+  const tieneAcceso = balance !== null && balance >= GATE_THRESHOLD;
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* HERO */}
@@ -116,7 +121,7 @@ export default function Academia() {
       <section className="max-w-5xl mx-auto w-full px-6 pb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {LECCIONES.map((leccion) => (
-            <LeccionCard key={leccion.slug} leccion={leccion} />
+            <LeccionCard key={leccion.slug} leccion={leccion} tieneAcceso={tieneAcceso} />
           ))}
         </div>
 
@@ -144,40 +149,48 @@ export default function Academia() {
   );
 }
 
-function LeccionCard({ leccion }: { leccion: Leccion }) {
+function LeccionCard({ leccion, tieneAcceso }: { leccion: Leccion; tieneAcceso: boolean }) {
+  // Solo se ve "apagada" si es premium Y el usuario aún no tiene acceso.
+  // Un holder con los tokens suficientes ve las premium tan vivas como las gratis.
+  const apagada = leccion.bloqueada && !tieneAcceso;
+
   const contenido = (
     <div
       className={`group relative h-full bg-gradient-to-br from-[#131318] to-[#0a0a0b] border rounded-2xl p-6 transition-all duration-300 overflow-hidden ${
-        leccion.bloqueada
+        apagada
           ? "border-zinc-800 opacity-70"
           : "border-[rgba(35,231,255,0.12)] hover:border-[rgba(35,231,255,0.4)]"
       }`}
     >
-      {!leccion.bloqueada && (
+      {!apagada && (
         <div className="absolute top-0 right-0 w-32 h-32 bg-[#23e7ff] opacity-[0.03] rounded-full blur-3xl group-hover:opacity-[0.08] transition-opacity" />
       )}
       <div className="relative">
         <div className="flex items-center justify-between mb-4">
           <p
             className={`text-xs font-semibold ${
-              leccion.bloqueada ? "text-zinc-600" : "text-[#23e7ff]"
+              apagada ? "text-zinc-600" : "text-[#23e7ff]"
             }`}
             style={{ fontFamily: "var(--font-jetbrains-mono)" }}
           >
             {leccion.numero}
           </p>
-          {leccion.bloqueada ? (
-            <span className="text-[10px] uppercase tracking-wider text-zinc-500 px-2 py-1 rounded border border-zinc-800 flex items-center gap-1">
-              🔒 1,000 $WITX
-            </span>
-          ) : (
+          {!leccion.bloqueada ? (
             <span className="text-[10px] uppercase tracking-wider text-[#00ff88] px-2 py-1 rounded border border-[rgba(0,255,136,0.2)]">
               Gratis
+            </span>
+          ) : tieneAcceso ? (
+            <span className="text-[10px] uppercase tracking-wider text-[#23e7ff] px-2 py-1 rounded border border-[rgba(35,231,255,0.3)] flex items-center gap-1">
+              ✓ Desbloqueada
+            </span>
+          ) : (
+            <span className="text-[10px] uppercase tracking-wider text-zinc-500 px-2 py-1 rounded border border-zinc-800 flex items-center gap-1">
+              🔒 1,000 $WITX
             </span>
           )}
         </div>
 
-        <h3 className={`text-lg font-bold mb-2 ${leccion.bloqueada ? "text-zinc-400" : "text-white"}`}>
+        <h3 className={`text-lg font-bold mb-2 ${apagada ? "text-zinc-400" : "text-white"}`}>
           {leccion.titulo}
         </h3>
         <p className="text-sm text-zinc-500 leading-relaxed mb-5">

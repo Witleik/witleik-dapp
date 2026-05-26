@@ -136,7 +136,7 @@ export default function Academia() {
             Con 1,000 $WITX o más en tu wallet accedes a contenido exclusivo: carry trade real, seguridad avanzada y behind the scenes del fondo.
           </p>
           <Link
-            href="/"
+            href="/swap"
             className="inline-block px-6 py-3 rounded-lg bg-[#23e7ff] text-black font-semibold text-sm hover:bg-[#1ad4ec] transition-all"
           >
             Comprar $WITX

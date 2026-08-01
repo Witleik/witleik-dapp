@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ConnectButton } from "@/components/ConnectButton";
+import { PrivyLoginButton } from "@/components/PrivyLoginButton";
+import { useActiveWallet } from "@/hooks/useActiveWallet";
 
 export function Header() {
   const pathname = usePathname();
+  const { source } = useActiveWallet();
 
   const navItems = [
     { name: "Inicio", path: "/" },
@@ -56,7 +59,10 @@ export function Header() {
           ))}
         </nav>
 
-        <ConnectButton />
+        <div className="flex items-center gap-3">
+          {source !== "phantom" && <PrivyLoginButton />}
+          {source !== "privy" && <ConnectButton />}
+        </div>
       </div>
     </header>
   );

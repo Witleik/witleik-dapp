@@ -14,6 +14,12 @@ const tools = [
       "Analiza cualquier token de Solana: liquidez, volumen, presión de venta y veredicto de mercado.",
     href: "/herramientas/scanner",
   },
+  {
+    title: "Calculadora de Posición",
+    description:
+      "Cuánto capital asignar a una acción según tu margen de seguridad, convicción y un tope de concentración.",
+    href: "/herramientas/posicion",
+  },
 ];
 
 export default function HerramientasPage() {

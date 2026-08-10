@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { NavCalculator } from "@/components/NavCalculator";
+import { WitxPriceLive } from "@/components/WitxPriceLive";
 
 // Gate frontend v1 - para datos sensibles reales mover verificación a backend
 const FUND_WALLET = "SvCqj2Rbbv4GHCQt3doLzGK1KFEs4zeStgwokKRgxba";
@@ -42,11 +44,30 @@ export default function AdminPage() {
             </p>
           </div>
         ) : (
-          <div className="mt-6">
-            <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
-              NAV por Token
-            </h2>
-            <NavCalculator />
+          <div className="mt-6 space-y-6">
+            {/* El precio va ARRIBA del NAV a propósito: la pregunta que trae
+                aquí casi siempre es si el token cotiza por encima o por debajo
+                del respaldo, y para eso hay que ver los dos números juntos. */}
+            <WitxPriceLive />
+
+            <div>
+              <h2 className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">
+                NAV por Token
+              </h2>
+              <NavCalculator />
+            </div>
+
+            <Link
+              href="/admin/inversores"
+              className="block rounded-2xl border border-[rgba(35,231,255,0.2)] bg-[#0f0f12] px-6 py-4 transition hover:border-[rgba(35,231,255,0.5)]"
+            >
+              <div className="text-sm font-semibold text-white">
+                Inversores · quién tiene $WITX y cuánto vale hoy
+              </div>
+              <div className="mt-1 text-xs text-zinc-500">
+                Leído de la cadena y valorado al precio en vivo.
+              </div>
+            </Link>
           </div>
         )}
       </div>

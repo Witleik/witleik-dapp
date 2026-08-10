@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, JetBrains_Mono } from "next/font/google";
 import Script from "next/script";
-import { PrivyProviderWrapper } from "@/components/PrivyProviderWrapper";
 import { WalletContextProvider } from "@/components/WalletContextProvider";
 import { Header } from "@/components/Header";
 import { BottomNav } from "@/components/BottomNav";
@@ -58,13 +57,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans pb-20 md:pb-0">
-        <PrivyProviderWrapper>
-          <WalletContextProvider>
-            <Header />
-            {children}
-            <BottomNav />
-          </WalletContextProvider>
-        </PrivyProviderWrapper>
+        <WalletContextProvider>
+          <Header />
+          {children}
+          <BottomNav />
+        </WalletContextProvider>
       </body>
     </html>
   );
